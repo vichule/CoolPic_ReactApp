@@ -66,7 +66,14 @@ button:focus-visible {
   width: -webkit-fill-available;
   top: 0;
   left: 0;
-  position: absolute;
+  position: fixed;
+  z-index: 10;
+}
+
+.dataContainer{
+  top: 20em;
+  position: relative;
+  margin-bottom: 40em;
 }
 
 

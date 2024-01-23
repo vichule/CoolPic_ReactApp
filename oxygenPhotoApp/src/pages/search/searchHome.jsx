@@ -45,7 +45,7 @@ export const SearchHome = () => {
         <>
             
             <img className="img-header" src="src\assets\neom-wTmGtmGQCjQ-unsplash.jpg"/>
-            {showSpinner ? <Spinner/> : <div>
+            {showSpinner ? <Spinner/> : <div className="dataContainer">
             {loadedPics.map((picture) => <CardItem
                                             imgUrl = {picture.urls.thumb}
                                             description = {picture.alt_description}

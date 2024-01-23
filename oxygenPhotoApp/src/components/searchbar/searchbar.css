@@ -11,7 +11,8 @@
 form{
     display: flex;
     position: relative;
-    bottom: 8em;
+    top: 20em;
+    justify-content: center;
 }
 
 .btnErase{

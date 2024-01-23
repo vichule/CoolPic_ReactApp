@@ -2,17 +2,19 @@ import './cardItem.css'
 
 export const CardItem = ({imgUrl, description, author}) => {
     return(
+        <div className='picContainer'>
         <div>
-        <div>
-            <img src={imgUrl} />
+            <img className='picImg' src={imgUrl} />
         </div>
-        <div>
-            <h3>{description}</h3>
-            <p>Picture By: {author}</p>
-        </div>
-        <div>
-            <button><img src='src/assets/favOff.png'/></button> 
-            <button><img src='src/assets/descargar.png'/></button>
+        <div className='itemBar'>
+            <div className='picText'>
+                <h3>{description.slice(0,28)+'...'}</h3>
+                <p>Picture By: {author}</p>
+            </div>
+            <div className='btnContainer'>
+                <button style={{padding: '0.2em'}} className='picBtn'><img src='src/assets/favOff.png'/></button> 
+                <button className='picBtn'><img style={{width: '2em', height: '2em'}} src='src/assets/descargar.png'/></button>
+            </div>
         </div>
     </div>
     )
