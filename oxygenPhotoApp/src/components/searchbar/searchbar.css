@@ -1,0 +1,23 @@
+.searchbar{
+    border: 1px solid black;
+    background-color: #EBEBEB;
+    border-radius: 0.5em;
+    height: 3em;
+    width: 15em;
+    color: #582B0B;
+    padding: 1em;
+}
+
+form{
+    display: flex;
+    position: relative;
+    bottom: 8em;
+}
+
+.btnErase{
+    position: relative;
+    right: 1.2em;
+    color: #582B0B;
+    font-weight: bold;
+
+}

@@ -1,0 +1,21 @@
+.navbar{
+    left: 5em;
+    position: fixed;
+    margin-top: 2em;
+}
+
+.NavBar {
+    color: #582B0B;
+    text-align: center;
+    font-family: Trirong;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 5px;
+    text-shadow: 0 4px 4px #00000054;
+  }
+  .NavBar.active {
+    font-weight: bold;
+  }
+  .NavBar:hover {
+    color: #582B0B;
+  }
