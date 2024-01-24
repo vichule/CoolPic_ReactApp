@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPics } from "../../features/search/searchThunk";
 import { CardItem } from "../../components/cardItem/cardItem";
+import { getFavorite } from "../../features/favorites/favoritesSlice";
 
 
 
@@ -15,6 +16,7 @@ export const SearchHome = () => {
     const pics = useSelector(getPicsData)
     const picsStatus = useSelector(getPicsStatus)
     const picsError = useSelector(getPicsError)
+
     
     const Spinner = () => <p> Loading... </p>
     
@@ -49,7 +51,9 @@ export const SearchHome = () => {
             {loadedPics.map((picture) => <CardItem
                                             imgUrl = {picture.urls.thumb}
                                             description = {picture.alt_description}
-                                            author = {picture.user.name} />
+                                            author = {picture.user.name} 
+                                            key={picture.id}
+                                            item={picture}/>
                                             )}
                 
             </div>}

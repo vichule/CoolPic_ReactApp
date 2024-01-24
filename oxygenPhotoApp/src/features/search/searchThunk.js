@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchPics = createAsyncThunk('search/fetchPics', async (queryPicParams) => {
     let url
-    const key = 'Your accesKey';
+    const key = 'tOnZdyE_aVrNGdAMpy-wrX6KVSGzGgpKI8jO3s2Pv2Q';
     const randomPage = Math.floor(Math.random() * 100)
     const picsPage = 12
     if (queryPicParams) {
