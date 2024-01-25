@@ -1,0 +1,22 @@
+.btnOrder{
+    top: 22em;
+    position: relative;
+    color: #582B0B;
+    padding: 0.5em 1em 0.5em 1em;
+    border-radius: 0.5em;
+    font-family: 'Trirong';
+    background-color: transparent;
+    cursor: pointer;
+    width: 15em;
+    display: inline-block;
+}
+
+.selectContainer{
+    border: 2px solid #582B0B;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+Select{
+    cursor: pointer;
+}

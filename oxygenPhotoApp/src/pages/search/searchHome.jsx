@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPics } from "../../features/search/searchThunk";
 import { CardItem } from "../../components/cardItem/cardItem";
-import { getFavorite } from "../../features/favorites/favoritesSlice";
+import { SearchBar } from "../../components/searchbar/searchbar";
+
 
 
 
@@ -11,6 +12,8 @@ export const SearchHome = () => {
     
     const [showSpinner, setShowSpinner] = useState(false)
     const [loadedPics, setLoadedPic] = useState([])
+    const [query, setQuery] = useState('')
+    
 
     const dispatch = useDispatch();
     const pics = useSelector(getPicsData)
@@ -19,41 +22,45 @@ export const SearchHome = () => {
 
     
     const Spinner = () => <p> Loading... </p>
+
+    
     
 
     useEffect(() =>{
         if(picsStatus === 'idle'){
             dispatch(fetchPics())
-            console.log('peticion')
         } else if (picsStatus === 'pending'){
             setShowSpinner(true)
-            console.log('pendiente')
 
         } else if (picsStatus === 'fulfilled'){
             setLoadedPic(pics)
             setShowSpinner(false)
-            console.log('hecho')
-            console.log(pics)
 
         } else if (picsStatus === 'rejected'){
             setShowSpinner(true)
-            console.log('picsError')
             console.log(picsError)
         }
     },[dispatch,pics,picsStatus])
+
+    useEffect(() => {
+        if (query !== "") {
+          dispatch(fetchPics({ queryPicParams: query }));
+        }
+      }, [dispatch, query]);
 
 
     return (
         <>
             
-            <img className="img-header" src="src\assets\neom-wTmGtmGQCjQ-unsplash.jpg"/>
+            <div className="img-header background1"></div>
             {showSpinner ? <Spinner/> : <div className="dataContainer">
             {loadedPics.map((picture) => <CardItem
                                             imgUrl = {picture.urls.thumb}
                                             description = {picture.alt_description}
                                             author = {picture.user.name} 
                                             key={picture.id}
-                                            item={picture}/>
+                                            item={picture}
+                                            />
                                             )}
                 
             </div>}

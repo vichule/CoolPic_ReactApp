@@ -1,0 +1,59 @@
+.opened{
+    display: block;
+    top: 30em;
+    position: fixed;
+    background-color: #D09E53;
+    z-index: 100;
+}
+
+.closed{
+    display: none;
+}
+
+.infoContainer{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 4em 1em 1em 1em;
+    border: 3px solid #582B0B;
+    width: 18em;
+    height: 25em;
+    font-family: 'Oxanium';
+    color: #582B0B;
+    font-size: medium;
+}
+
+.infoContainer p{
+    font-weight: 100;
+}
+
+.infoContainer b{
+    font-size: 1.2em;
+}
+
+.closeBtn{
+    color: #582B0B;
+    position: absolute;
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    top: 1em;
+    right: 1em;
+    background-color: white;
+    border: 1px solid #582B0B;
+    border-radius: 1em;
+}
+
+.editBtn{
+    color: #582B0B;
+    position: relative;
+    width: 12em;
+    height: 3em;
+    top: 3em;
+    left: 3em;
+    background-color: white;
+    border: 3px solid #582B0B;
+    border-radius: 0.5em;
+    font-family: Oxanium;
+    font-weight: bold;
+}

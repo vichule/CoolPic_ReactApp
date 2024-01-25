@@ -8,7 +8,7 @@
     padding: 1em;
 }
 
-form{
+.searchContainer{
     display: flex;
     position: relative;
     top: 20em;
@@ -21,4 +21,10 @@ form{
     color: #582B0B;
     font-weight: bold;
 
+}
+
+@media (width > 800px){
+    .searchbar{
+        width: 40em;
+    }
 }

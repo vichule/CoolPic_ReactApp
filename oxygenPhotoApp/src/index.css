@@ -74,6 +74,22 @@ button:focus-visible {
   top: 20em;
   position: relative;
   margin-bottom: 40em;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
+.background1 {
+  background: url(/src/assets/neom-wTmGtmGQCjQ-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.background2{
+  background-image: url(/src/assets/nadine-shaabana-VA9xSQekC8c-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 

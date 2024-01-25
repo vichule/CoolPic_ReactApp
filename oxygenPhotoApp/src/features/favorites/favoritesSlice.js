@@ -15,6 +15,7 @@ export const favoritesSlice = createSlice({
             if(!isFav){
                 state.data.push(action.payload)
                 localStorage.setItem("favPics", JSON.stringify(state.data))
+                
             }
             
         },
@@ -23,6 +24,12 @@ export const favoritesSlice = createSlice({
             localStorage.setItem("favPics", JSON.stringify(state.data))
         },
         editDescription(state,action){
+            const newFavs = [...state.data]
+            const favId = newFavs.findIndex((picture) => picture.id === action.payload.id)
+            const newPic = {...newFavs[favId], description: action.payload.newDescription}  
+            newFavs[favId] = newPic
+            state.data = newFavs
+            localStorage.setItem("favPics", JSON.stringify(state.data))
 
         }
     }
