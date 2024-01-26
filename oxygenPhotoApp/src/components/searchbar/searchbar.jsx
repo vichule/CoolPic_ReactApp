@@ -11,7 +11,7 @@ export const SearchBar = () => {
     const handleDelete = () => {
         
     }
-    //console.log(query)
+    console.log(query)
 
     return(
         <>

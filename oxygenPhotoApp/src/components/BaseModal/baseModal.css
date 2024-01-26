@@ -1,0 +1,42 @@
+.modal::backdrop {
+    background: hsl(0 0% 0% / 50%);
+  }
+  
+  .modal {
+    max-width: 40em;
+    padding: 2em;
+    border: 0;
+    border-radius: 0.5em;
+    position: fixed;
+    box-shadow: hsl(0 0% 0% / 10%) 0 0 0.5rem 0.25rem;
+    top: 25%;
+    left: 6%;
+    width: 33em;
+    height: 45em;
+    background-color: #D09E53;
+  }
+  
+  .modal-close-btn {
+    font-size: 0.75em;
+    position: absolute;
+    top: 0.25em;
+    right: 0.25em;
+    color: #582B0B;
+    position: absolute;
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    background-color: white;
+    border: 2px solid #582B0B;
+    border-radius: 2em;
+    width: 2.5em;
+    height: 2.5em;
+    font-weight: 900;
+  }
+
+
+  @media (width > 800px){
+    .modal{
+        left: 40%;
+    }
+}

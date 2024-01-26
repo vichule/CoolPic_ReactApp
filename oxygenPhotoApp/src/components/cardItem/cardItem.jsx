@@ -4,14 +4,13 @@ import { addFavoritePic, removeFavorite, getFavorite } from '../../features/favo
 import { useState } from 'react';
 import Swal from 'sweetalert2';
 import { saveAs } from 'file-saver';
-import { InfoModal } from '../infoModal/infoModal';
+import InfoModal from '../infoModal/infoModal';
 
 
 export const CardItem = ({imgUrl, description, author, item}) => {
 
     const dispatch = useDispatch();
     const favorites = useSelector(getFavorite)
-    const [favPics, setFavPics] = useState(favorites)
     const [open, setOpen] = useState(false)
     
     const isFav = favorites.some((pic) => pic === item)
@@ -63,35 +62,15 @@ export const CardItem = ({imgUrl, description, author, item}) => {
           })
       };
 
-      const handleInfo1 = () => {
-        Swal.fire({
-            title: "<strong>Picture Information</strong>",
-            icon: "info",
-            html: `<div>
-              <b>Description:</b>${description}
-              <b>Likes:</b>${item.likes}
-              <b>Width:</b>${item.width}
-              <b>Height:</b>${item.height}
-              </div>`,
-            showCloseButton: true,
-            focusConfirm: false,
-            confirmButtonText: `Edit Description`,
-          });
-      }
-
+      
       const handleInfo = () =>{
         setOpen(true)
       }
 
       const handleCloseInfo = () =>{
-        console.log('cerrar')
+        setOpen(false)
       }
 
-      
-
-      
-
-      
 
 
     return(
@@ -103,7 +82,7 @@ export const CardItem = ({imgUrl, description, author, item}) => {
             <div className='itemBar'>
                 <div className='picText'>
                     <h3>{description.length === 0 ? 'No description' : description.slice(0,28)+'...'}</h3>
-                    <p>Picture By: {author}</p>
+                    <p>Picture By: {author.slice(0,28)}</p>
                 </div>
                 <div className='btnContainer'>
                     {isFav ? <button className='picBtn' onClick={handleInfo} style={{padding: '0.2em'}}><img src='src/assets/mas.png'/></button>: ''}
@@ -115,8 +94,10 @@ export const CardItem = ({imgUrl, description, author, item}) => {
                                width={item.width} 
                                height={item.height} 
                                likes={item.likes} 
-                               close={handleCloseInfo}
+                               onClose={handleCloseInfo}
                                isOpen={open}
+                               id={item.id}
+                               picture={item}
                             /> 
             : ''}
         </div>
