@@ -7,7 +7,8 @@ export const favoritesSlice = createSlice({
     initialState: {
         status: 'idle',
         data: JSON.parse(localStorage.getItem("favPics")) || [],
-        error: null
+        error: null,
+        searchQuery: ''
     },
     reducers: {
         addFavoritePic(state,action){
@@ -26,19 +27,22 @@ export const favoritesSlice = createSlice({
         editDescription(state,action){
             const newFavs = [...state.data]
             const favId = newFavs.findIndex((picture) => picture.id === action.payload.id)
-            const newPic = {...newFavs[favId], description: action.payload.newDescription}  
+            const newPic = {...newFavs[favId], alt_description: action.payload.newDescription}  
             newFavs[favId] = newPic
             state.data = newFavs
             localStorage.setItem("favPics", JSON.stringify(state.data))
-            console.log(newPic)
-
+            //<h3>{description.length === 0 ? 'No description' : description.slice(0,28)+'...'}</h3> para que no se me olvide cuando este solucionado ponerlo en cardItem
         },
         sortFavorite: (state, action) => {
             state.data = state.data.sort((a, b) => a[action.payload] < b[action.payload] ? 1 : -1)
-        }
+        },
+        setSearchQuery: (state, action) => {
+            state.searchQuery = action.payload;
+        },
     }
 })
 
+export const getSearchQuery = (state) => state.favoritePics.searchQuery;
 export const getFavoriteStatus = (state) => state.favoritePics.status
 export const getFavorite = (state) => state.favoritePics.data
-export const { addFavoritePic, removeFavorite, editDescription, sortFavorite } = favoritesSlice.actions
+export const { addFavoritePic, removeFavorite, editDescription, sortFavorite, setSearchQuery } = favoritesSlice.actions

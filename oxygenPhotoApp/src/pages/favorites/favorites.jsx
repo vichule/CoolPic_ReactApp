@@ -1,13 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux'
 import './favorites.css'
-import { getFavorite, sortFavorite } from '../../features/favorites/favoritesSlice'
+import { getFavorite, getSearchQuery, sortFavorite, setSearchQuery } from '../../features/favorites/favoritesSlice'
 import { CardItem } from '../../components/cardItem/cardItem'
-import { useEffect, useState } from 'react'
 import Select from 'react-select'
+import { SearchBar } from '../../components/searchbar/searchbar'
 
 
 export const Favorites = () => {
     const favoritePicture = useSelector(getFavorite)
+    const searchQuery = useSelector(getSearchQuery);
     const dispatch = useDispatch();
 
     const handleChange = (e) =>{
@@ -15,6 +16,16 @@ export const Favorites = () => {
           dispatch(sortFavorite(e.value))
         }
     }
+
+    const handleSearch = (query) => {
+        dispatch(setSearchQuery(query));
+    };
+
+    const filteredPictures = searchQuery
+  ? favoritePicture.filter((picture) =>
+      picture.alt_description && picture.alt_description.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  : favoritePicture;
 
 
     const options = [
@@ -25,10 +36,13 @@ export const Favorites = () => {
 
     ]
 
+    
+
 
 
     return (
         <>
+            <SearchBar onSearch={handleSearch} />
             <div className="img-header background2"></div>
             <div className='btnOrder'>
                 <Select options={options} 
@@ -38,9 +52,9 @@ export const Favorites = () => {
                 />
 
             </div>
-            {favoritePicture.length === 0 ? <p style={{color: 'black'}}>It seems that there are no favorite pics saved.</p> : 
+            {filteredPictures.length === 0 ? <p style={{color: 'black'}}>It seems that there are no favorite pics saved or coincidences.</p> : 
             <div className="dataContainer">
-            {favoritePicture.map((picture) => <CardItem
+            {filteredPictures.map((picture) => <CardItem
                 imgUrl = {picture.urls.regular}
                 description = {picture.alt_description}
                 author = {picture.user.name}

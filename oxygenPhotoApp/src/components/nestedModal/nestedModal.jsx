@@ -26,8 +26,8 @@ const NestedModal = ({id, description, isOpen, onClose, onSubmit, picture }) => 
     console.log(`new description: ${formState}`)
     
     dispatch(editDescription(picture, formState))
-    
-    onSubmit();
+    console.log(`pasa?: ${formState}`)
+    onSubmit(formState);
   };
 
   const handleInputChange = (event) => {
@@ -35,6 +35,7 @@ const NestedModal = ({id, description, isOpen, onClose, onSubmit, picture }) => 
     
   };
   
+  console.log(description)
 
   return (
     <Modal hasCloseBtn={true} isOpen={isOpen} onClose={onClose}>
@@ -46,6 +47,7 @@ const NestedModal = ({id, description, isOpen, onClose, onSubmit, picture }) => 
             type="text"
             name="newDescription"
             onChange={handleInputChange}
+            className='inputEdit'
             
           />
 

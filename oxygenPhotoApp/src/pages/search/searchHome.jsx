@@ -11,20 +11,19 @@ import { SearchBar } from "../../components/searchbar/searchbar";
 export const SearchHome = () => {
     
     const [showSpinner, setShowSpinner] = useState(false)
-    const [loadedPics, setLoadedPic] = useState([])
-    const [query, setQuery] = useState('')
+    const [initialImages, setInitialImages] = useState([]);
     
-
     const dispatch = useDispatch();
     const pics = useSelector(getPicsData)
     const picsStatus = useSelector(getPicsStatus)
     const picsError = useSelector(getPicsError)
 
     
-    const Spinner = () => <p> Loading... </p>
+    const Spinner = () => <p style={{color: 'black'}}> Loading... </p>
 
-    
-    
+    const handleSearch = (query) => {
+        dispatch(fetchPics({ queryPicParams: query }));
+    };
 
     useEffect(() =>{
         if(picsStatus === 'idle'){
@@ -33,29 +32,26 @@ export const SearchHome = () => {
             setShowSpinner(true)
 
         } else if (picsStatus === 'fulfilled'){
-            setLoadedPic(pics)
+            
             setShowSpinner(false)
 
         } else if (picsStatus === 'rejected'){
             setShowSpinner(true)
             console.log(picsError)
         }
-    },[dispatch,pics,picsStatus])
+    },[dispatch, picsStatus])
 
-    useEffect(() => {
-        if (query !== "") {
-          dispatch(fetchPics({ queryPicParams: query }));
-        }
-      }, [dispatch, query]);
+    const picturesToDisplay = pics.results ? pics.results : pics;
+
 
 
     return (
         <>
-            
+            <SearchBar onSearch={handleSearch} />
             <div className="img-header background1"></div>
             {showSpinner ? <Spinner/> : <div className="dataContainer">
-            {loadedPics.map((picture) => <CardItem
-                                            imgUrl = {picture.urls.thumb}
+            {picturesToDisplay.map((picture) => <CardItem
+                                            imgUrl = {picture.urls.regular}
                                             description = {picture.alt_description}
                                             author = {picture.user.name} 
                                             key={picture.id}
