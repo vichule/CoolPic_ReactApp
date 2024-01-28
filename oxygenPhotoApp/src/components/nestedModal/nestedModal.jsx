@@ -6,7 +6,7 @@ import { editDescription } from '../../features/favorites/favoritesSlice';
 
 
 
-const NestedModal = ({id, description, isOpen, onClose, onSubmit, picture }) => {
+const NestedModal = ({description, isOpen, onClose, onSubmit, picture }) => {
   const [formState, setFormState] = useState(description);
   const focusInputRef = useRef(null);
   const dispatch = useDispatch();
@@ -22,12 +22,8 @@ const NestedModal = ({id, description, isOpen, onClose, onSubmit, picture }) => 
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(`description: ${description}`)
-    console.log(`new description: ${formState}`)
-    
-    dispatch(editDescription(picture, formState))
-    console.log(`pasa?: ${formState}`)
-    onSubmit(formState);
+    dispatch(editDescription({ id: picture.id, newDescription: formState }))
+    onSubmit();
   };
 
   const handleInputChange = (event) => {
@@ -35,7 +31,6 @@ const NestedModal = ({id, description, isOpen, onClose, onSubmit, picture }) => 
     
   };
   
-  console.log(description)
 
   return (
     <Modal hasCloseBtn={true} isOpen={isOpen} onClose={onClose}>

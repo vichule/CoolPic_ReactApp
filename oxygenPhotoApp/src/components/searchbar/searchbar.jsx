@@ -8,10 +8,7 @@ export const SearchBar = ({ onSearch }) => {
         const searchQuery = e.target.value;
         setQuery(searchQuery);
         onSearch(searchQuery);
-    }
-
-    console.log(query)
-    
+    }    
 
     return(
         <>

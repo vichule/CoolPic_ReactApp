@@ -80,7 +80,7 @@ export const CardItem = ({imgUrl, description, author, item}) => {
             </div>
             <div className='itemBar'>
                 <div className='picText'>
-                    <h3>{description}</h3>
+                <h3>{description === undefined || description.length === 0 ? 'No description' : description.length <= 28 ? description : `${description.slice(0, 28)}...`}</h3>
                     <p>Picture By: {author.slice(0,28)}</p>
                 </div>
                 <div className='btnContainer'>

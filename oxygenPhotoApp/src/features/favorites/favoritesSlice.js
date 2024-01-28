@@ -31,7 +31,6 @@ export const favoritesSlice = createSlice({
             newFavs[favId] = newPic
             state.data = newFavs
             localStorage.setItem("favPics", JSON.stringify(state.data))
-            //<h3>{description.length === 0 ? 'No description' : description.slice(0,28)+'...'}</h3> para que no se me olvide cuando este solucionado ponerlo en cardItem
         },
         sortFavorite: (state, action) => {
             state.data = state.data.sort((a, b) => a[action.payload] < b[action.payload] ? 1 : -1)
