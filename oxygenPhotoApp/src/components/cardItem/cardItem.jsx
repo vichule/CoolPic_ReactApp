@@ -84,9 +84,9 @@ export const CardItem = ({imgUrl, description, author, item}) => {
                     <p>Picture By: {author.slice(0,28)}</p>
                 </div>
                 <div className='btnContainer'>
-                    {isFav ? <button className='picBtn' onClick={handleInfo} style={{padding: '0.2em'}}><img src='src/assets/mas.png'/></button>: ''}
-                    <button className='picBtn' onClick={handleFav} style={{padding: '0.2em'}}>{isFav ? <img src='src/assets/favOn.png'/> : <img src='src/assets/favOff.png'/>}</button> 
-                    <button className='picBtn' onClick={handleDownload} ><img style={{width: '2em', height: '2em'}} src='src/assets/descargar.png'/></button>
+                    {isFav ? <button className='picBtn' onClick={handleInfo} style={{padding: '0.2em'}}><img src='/src/assets/mas.png'/></button>: ''}
+                    <button className='picBtn' onClick={handleFav} style={{padding: '0.2em'}}>{isFav ? <img src='/src/assets/favOn.png'/> : <img src='/src/assets/favOff.png'/>}</button> 
+                    <button className='picBtn' onClick={handleDownload} ><img style={{width: '2em', height: '2em'}} src='/src/assets/descargar.png'/></button>
                 </div>
             </div>
             {open ? <InfoModal description={description} 

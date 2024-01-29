@@ -13,7 +13,7 @@ export const SearchBar = ({ onSearch }) => {
     return(
         <>
             <div className='searchContainer'>
-                <button><img className='icon' src='src/assets/buscar.png'/></button>
+                <button><img className='icon' src='/src/assets/buscar.png'/></button>
                 <div style={{marginLeft: '1em'}}>
                     <input onChange={handleSearch} className='searchbar' type="text" placeholder='Search picture...'/>
                 </div>
