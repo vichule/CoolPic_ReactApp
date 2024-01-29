@@ -13,16 +13,16 @@ export const Footer = () => {
                 <div className='footer_container2'>
                     
                     <Link to={ "https://github.com/vichule" } target="_blank">
-                        <img className='icon' src='src/assets/github.png' />
+                        <img className='icon' src='../../assets/github.png' />
                     </Link>
                     <Link to={ "https://www.linkedin.com/in/javier-caba%C3%B1as-d%C3%ADaz-rega%C3%B1%C3%B3n-634989204/" } target="_blank">
-                        <img className='icon' src='src/assets/linkedin.png' />
+                        <img className='icon' src='../../assets/linkedin.png' />
                     </Link>
                     <Link to={ "https://twitter.com/" } target="_blank">
-                        <img src='src/assets/Twitter.png' />
+                        <img src='../../assets/Twitter.png' />
                     </Link>
                     <Link to={ "https://www.facebook.com/" } target="_blank">
-                        <img src='src/assets/Facebook.png' />
+                        <img src='../../assets/Facebook.png' />
                     </Link>
                     
                 </div>
