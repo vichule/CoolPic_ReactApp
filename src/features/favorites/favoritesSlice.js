@@ -32,9 +32,6 @@ export const favoritesSlice = createSlice({
             state.data = newFavs
             localStorage.setItem("favPics", JSON.stringify(state.data))
         },
-        sortFavorite: (state, action) => {
-            state.data = state.data.sort((a, b) => a[action.payload] < b[action.payload] ? 1 : -1)
-        },
         setSearchQuery: (state, action) => {
             state.searchQuery = action.payload;
         },
@@ -44,4 +41,4 @@ export const favoritesSlice = createSlice({
 export const getSearchQuery = (state) => state.favoritePics.searchQuery;
 export const getFavoriteStatus = (state) => state.favoritePics.status
 export const getFavorite = (state) => state.favoritePics.data
-export const { addFavoritePic, removeFavorite, editDescription, sortFavorite, setSearchQuery } = favoritesSlice.actions
+export const { addFavoritePic, removeFavorite, editDescription, setSearchQuery } = favoritesSlice.actions
