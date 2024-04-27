@@ -41,6 +41,7 @@ export const SearchHome = () => {
         }
     },[dispatch, picsStatus])
 
+    //console.log(pics)
     const picturesToDisplay = pics.results ? pics.results : pics;
 
 

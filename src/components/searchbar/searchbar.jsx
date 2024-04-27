@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import './searchbar.css';
+import { useDispatch } from 'react-redux';
 
 export const SearchBar = ({ onSearch }) => {
     const [query, setQuery] = useState('');
+    const dispatch = useDispatch()
 
     const handleSearch = (e) => {
         const searchQuery = e.target.value;
