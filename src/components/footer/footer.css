@@ -23,8 +23,8 @@ span{
 
 .footer_container2{
     display: flex;
-    justify-content: space-between;
-    width: 12em;
+    justify-content: space-around;
+    width: 8em;
 }
 
 .icon{

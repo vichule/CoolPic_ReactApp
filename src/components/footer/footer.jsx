@@ -18,12 +18,6 @@ export const Footer = () => {
                     <Link to={ "https://www.linkedin.com/in/javier-caba%C3%B1as-d%C3%ADaz-rega%C3%B1%C3%B3n-634989204/" } target="_blank">
                         <img className='icon' src='../../assets/linkedin.png' />
                     </Link>
-                    <Link to={ "https://twitter.com/" } target="_blank">
-                        <img src='../../assets/Twitter.png' />
-                    </Link>
-                    <Link to={ "https://www.facebook.com/" } target="_blank">
-                        <img src='../../assets/Facebook.png' />
-                    </Link>
                     
                 </div>
             </footer>
