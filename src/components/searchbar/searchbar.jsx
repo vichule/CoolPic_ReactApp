@@ -10,14 +10,14 @@ export const SearchBar = ({ onSearch }) => {
         const searchQuery = e.target.value;
         setQuery(searchQuery);
         onSearch(searchQuery);
-    }    
+    }
 
-    return(
+    return (
         <>
             <div className='searchContainer'>
-                <button><img className='icon' src='../../assets/buscar.png'/></button>
-                <div style={{marginLeft: '1em'}}>
-                    <input onChange={handleSearch} className='searchbar' type="text" placeholder='Search picture...'/>
+                <button><img className='icon' src='../../assets/buscar.png' /></button>
+                <div style={{ marginLeft: '1em' }}>
+                    <input onChange={handleSearch} className='searchbar' type="text" placeholder='Search picture...' />
                 </div>
             </div>
         </>

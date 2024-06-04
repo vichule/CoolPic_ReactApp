@@ -37,7 +37,7 @@ const NestedModal = ({description, isOpen, onClose, onSubmit, picture }) => {
       <form onSubmit={handleSubmit}>
       <div className='infoContainer'>
           <label><b>Add your new description:</b></label>
-          <input
+          <textarea
             ref={focusInputRef}
             type="text"
             name="newDescription"

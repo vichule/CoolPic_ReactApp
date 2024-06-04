@@ -13,7 +13,7 @@ export const Favorites = () => {
     const [orderedPictures, setOrderedPicture] = useState(favoritePicture)
     const dispatch = useDispatch();
 
-    
+
 
     const handleSearch = (query) => {
         dispatch(setSearchQuery(query));
@@ -22,18 +22,18 @@ export const Favorites = () => {
     const filteredPictures = searchQuery ? orderedPictures.filter((picture) => picture.alt_description && picture.alt_description.toLowerCase().includes(searchQuery.toLowerCase())
     ) : orderedPictures;
 
-    useEffect(() =>{
+    useEffect(() => {
 
         setOrderedPicture(favoritePicture)
-    },[favoritePicture])
+    }, [favoritePicture])
 
-    const handleChange = (e) =>{
-        if(e.value !== ''){
-          
-          let newFavoritePicture = [...filteredPictures]
-          console.log(e.value)
-          newFavoritePicture = newFavoritePicture.sort((a, b) => a[e.value] < b[e.value] ? 1 : -1)
-          setOrderedPicture(newFavoritePicture)
+    const handleChange = (e) => {
+        if (e.value !== '') {
+
+            let newFavoritePicture = [...filteredPictures]
+            console.log(e.value)
+            newFavoritePicture = newFavoritePicture.sort((a, b) => a[e.value] < b[e.value] ? 1 : -1)
+            setOrderedPicture(newFavoritePicture)
         }
     }
     const options = [
@@ -44,7 +44,7 @@ export const Favorites = () => {
 
     ]
 
-    
+
 
 
 
@@ -53,23 +53,23 @@ export const Favorites = () => {
             <SearchBar onSearch={handleSearch} />
             <div className="img-header background2"></div>
             <div className='btnOrder'>
-                <Select options={options} 
-                        className='selectContainer'
-                        value={{ label: 'ORDER BY' }}
-                        onChange={handleChange}
+                <Select options={options}
+                    className='selectContainer'
+                    value={{ label: 'ORDER BY' }}
+                    onChange={handleChange}
                 />
 
             </div>
-            {filteredPictures.length === 0 ? <p style={{color: 'black'}}>It seems that there are no favorite pics saved or coincidences.</p> : 
-            <div className="dataContainer">
-            {filteredPictures.map((picture) => <CardItem
-                imgUrl = {picture.urls.regular}
-                description = {picture.alt_description}
-                author = {picture.user.name}
-                item={picture}
-                key= {picture.id} />
-                )}
-            </div>
+            {filteredPictures.length === 0 ? <p style={{ color: 'black' }}>It seems that there are no favorite pics saved or coincidences.</p> :
+                <div className="dataContainer">
+                    {filteredPictures.map((picture) => <CardItem
+                        imgUrl={picture.urls.regular}
+                        description={picture.alt_description}
+                        author={picture.user.name}
+                        item={picture}
+                        key={picture.id} />
+                    )}
+                </div>
             }
         </>
 

@@ -15,13 +15,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-      <Header/>
+        <Header />
         <Routes>
-          
+
           <Route path="/" element={<SearchHome />} />
           <Route path="/favorites" element={<Favorites />} />
         </Routes>
-      <Footer/>
+        <Footer />
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

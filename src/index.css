@@ -1,6 +1,7 @@
-html{
+html {
   font-size: 10px;
 }
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -28,6 +29,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -51,11 +53,13 @@ button {
   border: none;
   background-color: transparent;
   cursor: pointer;
-  
+
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -70,7 +74,7 @@ button:focus-visible {
   z-index: 10;
 }
 
-.dataContainer{
+.dataContainer {
   top: 20em;
   position: relative;
   margin-bottom: 40em;
@@ -86,10 +90,9 @@ button:focus-visible {
   background-position: center;
 }
 
-.background2{
+.background2 {
   background-image: url(/src/assets/nadine-shaabana-VA9xSQekC8c-unsplash.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
-

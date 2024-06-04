@@ -11,7 +11,6 @@ import { SearchBar } from "../../components/searchbar/searchbar";
 export const SearchHome = () => {
     
     const [showSpinner, setShowSpinner] = useState(false)
-    const [initialImages, setInitialImages] = useState([]);
     
     const dispatch = useDispatch();
     const pics = useSelector(getPicsData)
@@ -41,7 +40,6 @@ export const SearchHome = () => {
         }
     },[dispatch, picsStatus])
 
-    //console.log(pics)
     const picturesToDisplay = pics.results ? pics.results : pics;
 
 

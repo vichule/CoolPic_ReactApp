@@ -1,4 +1,4 @@
-.searchbar{
+.searchbar {
     border: 1px solid black;
     background-color: #EBEBEB;
     border-radius: 0.5em;
@@ -8,14 +8,14 @@
     padding: 1em;
 }
 
-.searchContainer{
+.searchContainer {
     display: flex;
     position: relative;
     top: 20em;
     justify-content: center;
 }
 
-.btnErase{
+.btnErase {
     position: relative;
     right: 1.2em;
     color: #582B0B;
@@ -23,8 +23,8 @@
 
 }
 
-@media (width > 800px){
-    .searchbar{
+@media (width > 800px) {
+    .searchbar {
         width: 40em;
     }
 }
