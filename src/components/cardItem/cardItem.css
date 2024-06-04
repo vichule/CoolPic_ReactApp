@@ -1,33 +1,33 @@
-.picImg{
+.picImg {
     height: 40em;
     width: 28em;
     border: 1px solid black;
     border-radius: 1em;
-
+    object-fit: cover;
 }
 
-.picBtn{
+.picBtn {
     height: 2em;
     width: 2em;
 
 }
 
-.picBtn img{
+.picBtn img {
     width: 1.5em;
     height: 1.5em;
 }
 
-.btnContainer{
+.btnContainer {
     display: flex;
     margin-right: 1em;
 }
 
-.picText{
+.picText {
     color: black;
     text-align: left;
 }
 
-.itemBar{
+.itemBar {
     display: flex;
     background-color: #d9d9d991;
     position: relative;

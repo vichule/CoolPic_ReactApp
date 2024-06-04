@@ -1,0 +1,36 @@
+name: Deploy app photos
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with: 
+        node-version: '18.18.0'
+    - name: Install requeriments
+      run: npm install
+    - name: Build the project
+      run: npm run build
+    - name: Make envfile
+      uses: SpicyPizza/create-envfile@v2.0
+      with:
+        envkey_VITE_ACCESS_KEY: ${{ secrets.VITE_ACCESS_KEY }}
+        directory: ./
+        file_name: .env
+        fail_on_empty: false
+        sort_keys: false
+    - uses: jakejarvis/s3-sync-action@master
+      with:
+        args: --acl public-read --follow-symlinks --delete
+      env:
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+        AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: 'eu-west-3'   
+        SOURCE_DIR: 'dist'      
