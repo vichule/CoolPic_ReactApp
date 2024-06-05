@@ -88,9 +88,9 @@ export const CardItem = ({ imgUrl, description, author, item }) => {
             <p>Picture By: {author.slice(0, 28)}</p>
           </div>
           <div className='btnContainer'>
-            {isFav ? <button className='picBtn' onClick={handleInfo} style={{ padding: '0.2em' }}><img src={{moreImg}} /></button> : ''}
-            <button className='picBtn' onClick={handleFav} style={{ padding: '0.2em' }}>{isFav ? <img src={{favOnImg}} /> : <img src={{favOffImg}} />}</button>
-            <button className='picBtn' onClick={handleDownload} ><img style={{ width: '2em', height: '2em' }} src={{downloadImg}} /></button>
+            {isFav ? <button className='picBtn' onClick={handleInfo} style={{ padding: '0.2em' }}><img src={moreImg} /></button> : ''}
+            <button className='picBtn' onClick={handleFav} style={{ padding: '0.2em' }}>{isFav ? <img src={favOnImg} /> : <img src={{favOffImg}} />}</button>
+            <button className='picBtn' onClick={handleDownload} ><img style={{ width: '2em', height: '2em' }} src={downloadImg} /></button>
           </div>
         </div>
         {open ? <InfoModal description={description}
