@@ -5,6 +5,10 @@ import { useState } from 'react';
 import Swal from 'sweetalert2';
 import { saveAs } from 'file-saver';
 import InfoModal from '../infoModal/infoModal';
+import downloadImg from '../../assets/descargar.png';
+import favOnImg from '../../assets/favOn.png';
+import favOffImg from '../../assets/favOff.png';
+import moreImg from '../../assets/mas.png';
 
 
 export const CardItem = ({ imgUrl, description, author, item }) => {
@@ -84,9 +88,9 @@ export const CardItem = ({ imgUrl, description, author, item }) => {
             <p>Picture By: {author.slice(0, 28)}</p>
           </div>
           <div className='btnContainer'>
-            {isFav ? <button className='picBtn' onClick={handleInfo} style={{ padding: '0.2em' }}><img src='../../assets/mas.png' /></button> : ''}
-            <button className='picBtn' onClick={handleFav} style={{ padding: '0.2em' }}>{isFav ? <img src='../../assets/favOn.png' /> : <img src='../../assets/favOff.png' />}</button>
-            <button className='picBtn' onClick={handleDownload} ><img style={{ width: '2em', height: '2em' }} src='../../assets/descargar.png' /></button>
+            {isFav ? <button className='picBtn' onClick={handleInfo} style={{ padding: '0.2em' }}><img src={{moreImg}} /></button> : ''}
+            <button className='picBtn' onClick={handleFav} style={{ padding: '0.2em' }}>{isFav ? <img src={{favOnImg}} /> : <img src={{favOffImg}} />}</button>
+            <button className='picBtn' onClick={handleDownload} ><img style={{ width: '2em', height: '2em' }} src={{downloadImg}} /></button>
           </div>
         </div>
         {open ? <InfoModal description={description}
