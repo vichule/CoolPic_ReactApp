@@ -24,7 +24,7 @@ export const CardItem = ({ imgUrl, description, author, item }) => {
   const handleFav = () => {
     if (isFav) {
       Swal.fire({
-        title: "This will delete the picture",
+        title: "This will delete the picture from your favourites",
         text: "Are you sure?",
         icon: "warning",
         showCancelButton: true,
