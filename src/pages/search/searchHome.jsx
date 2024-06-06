@@ -9,57 +9,74 @@ import { SearchBar } from "../../components/searchbar/searchbar";
 
 
 export const SearchHome = () => {
-    
+
     const [showSpinner, setShowSpinner] = useState(false)
-    
+
     const dispatch = useDispatch();
     const pics = useSelector(getPicsData)
     const picsStatus = useSelector(getPicsStatus)
     const picsError = useSelector(getPicsError)
 
-    
-    const Spinner = () => <p style={{color: 'black'}}> Loading... </p>
+
+    const Spinner = () => <p style={{ color: 'black' }}> Loading... </p>
 
     const handleSearch = (query) => {
-        dispatch(fetchPics({ queryPicParams: query }));
+        dispatch(fetchPics({query} ));
+        setCurrentPage(1);
     };
 
-    useEffect(() =>{
-        if(picsStatus === 'idle'){
+    useEffect(() => {
+        if (picsStatus === 'idle') {
             dispatch(fetchPics())
-        } else if (picsStatus === 'pending'){
+        } else if (picsStatus === 'pending') {
             setShowSpinner(true)
 
-        } else if (picsStatus === 'fulfilled'){
-            
+        } else if (picsStatus === 'fulfilled') {
+
             setShowSpinner(false)
 
-        } else if (picsStatus === 'rejected'){
+        } else if (picsStatus === 'rejected') {
             setShowSpinner(true)
             console.log(picsError)
         }
-    },[dispatch, picsStatus])
+    }, [dispatch, picsStatus])
 
     const picturesToDisplay = pics.results ? pics.results : pics;
+    const [currentPage, setCurrentPage] = useState(1)
+    const rows = 15
+    const firstPage = (currentPage - 1) * rows
+    const lastPage = firstPage + rows
+    const picsPerPage = picturesToDisplay.slice(firstPage, lastPage)
+    const totalPages = Math.ceil(picturesToDisplay.length / rows)
 
+    const handlePage = (newPage) => {
+        setCurrentPage(newPage)
+    }
 
 
     return (
         <>
             <SearchBar onSearch={handleSearch} />
             <div className="img-header background1"></div>
-            {showSpinner ? <Spinner/> : <div className="dataContainer">
-            {picturesToDisplay.map((picture) => <CardItem
-                                            imgUrl = {picture.urls.regular}
-                                            description = {picture.alt_description}
-                                            author = {picture.user.name} 
-                                            key={picture.id}
-                                            item={picture}
-                                            />
-                                            )}
-                
+            {showSpinner ? <Spinner /> : <div className="dataContainer">
+                {picsPerPage.map((picture) => <CardItem
+                    imgUrl={picture.urls.regular}
+                    description={picture.alt_description}
+                    author={picture.user.name}
+                    key={picture.id}
+                    item={picture}
+                />
+                )}
+
             </div>}
-        
+
+            <div>
+                <button onClick={() => handlePage(currentPage - 1)}
+                    disabled={currentPage === 1}>Previous</button>
+                <button onClick={() => handlePage(currentPage + 1)}
+                    disabled={currentPage === totalPages || totalPages === 0}>Next</button>
+
+            </div>
         </>
 
 
