@@ -43,7 +43,7 @@ export const SearchHome = () => {
 
     const picturesToDisplay = pics.results ? pics.results : pics;
     const [currentPage, setCurrentPage] = useState(1)
-    const rows = 15
+    const rows = 9
     const firstPage = (currentPage - 1) * rows
     const lastPage = firstPage + rows
     const picsPerPage = picturesToDisplay.slice(firstPage, lastPage)
@@ -70,10 +70,11 @@ export const SearchHome = () => {
 
             </div>}
 
-            <div>
-                <button onClick={() => handlePage(currentPage - 1)}
+            <div className="paginationContainer">
+                <button className="paginationBtn" onClick={() => handlePage(currentPage - 1)}
                     disabled={currentPage === 1}>Previous</button>
-                <button onClick={() => handlePage(currentPage + 1)}
+                    <p style={{color: "black"}}>{currentPage}</p>
+                <button className="paginationBtn" onClick={() => handlePage(currentPage + 1)}
                     disabled={currentPage === totalPages || totalPages === 0}>Next</button>
 
             </div>

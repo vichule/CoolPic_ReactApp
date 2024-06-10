@@ -77,7 +77,6 @@ button:focus-visible {
 .dataContainer {
   top: 20em;
   position: relative;
-  margin-bottom: 40em;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -97,4 +96,17 @@ button:focus-visible {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.paginationContainer {
+  margin-bottom: 10em;
+  display: inline-flex;
+  gap: 5em;
+}
+
+.paginationBtn {
+  background-color: #d09e53;
+  height: 3rem;
+  width: 7rem;
+  border-radius: 1em;
 }

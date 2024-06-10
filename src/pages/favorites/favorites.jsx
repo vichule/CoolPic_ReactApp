@@ -44,6 +44,16 @@ export const Favorites = () => {
 
     ]
 
+    const [currentPage, setCurrentPage] = useState(1)
+    const rows = 9
+    const firstPage = (currentPage - 1) * rows
+    const lastPage = firstPage + rows
+    const picsPerPage = filteredPictures.slice(firstPage, lastPage)
+    const totalPages = Math.ceil(filteredPictures.length / rows)
+
+    const handlePage = (newPage) => {
+        setCurrentPage(newPage)
+    }
 
 
 
@@ -60,17 +70,33 @@ export const Favorites = () => {
                 />
 
             </div>
-            {filteredPictures.length === 0 ? <p style={{ color: 'black' }}>It seems that there are no favorite pics saved or coincidences.</p> :
+            {filteredPictures.length === 0 ?
                 <div className="dataContainer">
-                    {filteredPictures.map((picture) => <CardItem
-                        imgUrl={picture.urls.regular}
-                        description={picture.alt_description}
-                        author={picture.user.name}
-                        item={picture}
-                        key={picture.id} />
-                    )}
+                    <p style={{ color: 'black' }}>It seems that there are no favorite pics saved or coincidences.</p>
                 </div>
+                :
+                <>
+                    <div className="dataContainer">
+                        {picsPerPage.map((picture) => <CardItem
+                            imgUrl={picture.urls.regular}
+                            description={picture.alt_description}
+                            author={picture.user.name}
+                            item={picture}
+                            key={picture.id} />
+                        )}
+                    </div>
+                    <div className="paginationContainer">
+                        <button className="paginationBtn" onClick={() => handlePage(currentPage - 1)}
+                            disabled={currentPage === 1}>Previous</button>
+                        <p style={{ color: "black" }}>{currentPage}</p>
+                        <button className="paginationBtn" onClick={() => handlePage(currentPage + 1)}
+                            disabled={currentPage === totalPages || totalPages === 0}>Next</button>
+
+                    </div>
+                </>
             }
+
+
         </>
 
 
