@@ -31,7 +31,6 @@ export const Favorites = () => {
         if (e.value !== '') {
 
             let newFavoritePicture = [...filteredPictures]
-            console.log(e.value)
             newFavoritePicture = newFavoritePicture.sort((a, b) => a[e.value] < b[e.value] ? 1 : -1)
             setOrderedPicture(newFavoritePicture)
         }
@@ -65,7 +64,7 @@ export const Favorites = () => {
             <div className='btnOrder'>
                 <Select options={options}
                     className='selectContainer'
-                    value={{ label: 'ORDER BY' }}
+                    value={ options.value }
                     onChange={handleChange}
                 />
 

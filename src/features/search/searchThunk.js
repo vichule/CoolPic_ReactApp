@@ -8,10 +8,8 @@ export const fetchPics = createAsyncThunk('search/fetchPics', async (queryPicPar
   if (queryPicParams && queryPicParams.query && queryPicParams.query.trim() !== '') {
     const queryString = `query=${encodeURIComponent(queryPicParams.query)}`;
     url = `https://api.unsplash.com/search/photos?client_id=${key}&${queryString}`;
-    console.log('con busqueda:', url);
   } else {
     url = `https://api.unsplash.com/photos/random?client_id=${key}&count=${picsPage}`;
-    console.log('sin busqueda:', url);
   }
 
   try {

@@ -21,7 +21,7 @@ export const SearchHome = () => {
     const Spinner = () => <p style={{ color: 'black' }}> Loading... </p>
 
     const handleSearch = (query) => {
-        dispatch(fetchPics({query} ));
+        dispatch(fetchPics({ query }));
         setCurrentPage(1);
     };
 
@@ -59,21 +59,24 @@ export const SearchHome = () => {
             <SearchBar onSearch={handleSearch} />
             <div className="img-header background1"></div>
             {showSpinner ? <Spinner /> : <div className="dataContainer">
-                {picsPerPage.map((picture) => <CardItem
-                    imgUrl={picture.urls.regular}
-                    description={picture.alt_description}
-                    author={picture.user.name}
-                    key={picture.id}
-                    item={picture}
-                />
-                )}
+                {picturesToDisplay.length === 0 ?
+                    <p style={{ color: 'black' }}>It seems that there are no coincidences, try another word.</p>
+                    :
+                    picsPerPage.map((picture) => <CardItem
+                        imgUrl={picture.urls.regular}
+                        description={picture.alt_description}
+                        author={picture.user.name}
+                        key={picture.id}
+                        item={picture}
+                    />
+                    )}
 
             </div>}
 
             <div className="paginationContainer">
                 <button className="paginationBtn" onClick={() => handlePage(currentPage - 1)}
                     disabled={currentPage === 1}>Previous</button>
-                    <p style={{color: "black"}}>{currentPage}</p>
+                <p style={{ color: "black" }}>{currentPage}</p>
                 <button className="paginationBtn" onClick={() => handlePage(currentPage + 1)}
                     disabled={currentPage === totalPages || totalPages === 0}>Next</button>
 
