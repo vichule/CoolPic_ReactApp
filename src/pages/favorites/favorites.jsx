@@ -66,6 +66,7 @@ export const Favorites = () => {
                     className='selectContainer'
                     value={ options.value }
                     onChange={handleChange}
+                    placeholder="Order By"
                 />
 
             </div>
