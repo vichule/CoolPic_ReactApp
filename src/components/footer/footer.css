@@ -5,10 +5,7 @@ footer{
     height: 9em;
     padding: 3em 3em 1em 3em;
     font-family: Trirong;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    
 }
 
 span{
@@ -33,3 +30,12 @@ span{
 .gradB {
     background-image: linear-gradient(white, #D09E53);
   }
+
+  @media (width > 800px) {
+    footer{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+}
