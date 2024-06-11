@@ -112,3 +112,19 @@ button:focus-visible {
   width: 7rem;
   border-radius: 1em;
 }
+
+.widthMasonry{
+  width: 32em !important;
+}
+
+@media (width > 700px) {
+  .widthMasonry{
+    width: 60em !important;
+  }
+}
+
+@media (width > 1000px) {
+  .widthMasonry{
+    width: 90em !important;
+  }
+}

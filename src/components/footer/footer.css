@@ -5,7 +5,7 @@ footer{
     height: 9em;
     padding: 3em 3em 1em 3em;
     font-family: Trirong;
-    
+    min-width: 30.5em;
 }
 
 span{
