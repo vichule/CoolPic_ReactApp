@@ -11,7 +11,7 @@ import favOffImg from '../../assets/favOff.png';
 import moreImg from '../../assets/mas.png';
 
 
-export const CardItem = ({ imgUrl, description, author, item }) => {
+export const CardItem = ({ imgUrl, description, author, item, index }) => {
 
   const dispatch = useDispatch();
   const favorites = useSelector(getFavorite)
@@ -78,33 +78,34 @@ export const CardItem = ({ imgUrl, description, author, item }) => {
 
   return (
     <>
-      <div className='picContainer'>
-        <div>
-          <img className='picImg' src={imgUrl} />
-        </div>
-        <div className='itemBar'>
-          <div className='picText'>
-            <h3>{description === undefined || description.length === 0 ? 'No description' : description.length <= 28 ? description : `${description.slice(0, 28)}...`}</h3>
-            <p>Picture By: {author.slice(0, 28)}</p>
+      
+        <div className='picContainer' style={{ height: index % 2 ? "250px" : "350px" }} >
+          <div>
+            <img className='picImg' src={imgUrl} style={{ height: index % 2 ? "250px" : "350px" }}/>
           </div>
-          <div className='btnContainer'>
-            {isFav ? <button className='picBtn' onClick={handleInfo} style={{ padding: '0.2em' }}><img src={moreImg} /></button> : ''}
-            <button className='picBtn' onClick={handleFav} style={{ padding: '0.2em' }}>{isFav ? <img src={favOnImg} /> : <img src={favOffImg} />}</button>
-            <button className='picBtn' onClick={handleDownload} ><img style={{ width: '2em', height: '2em' }} src={downloadImg} /></button>
+          <div className='itemBar'>
+            <div className='picText'>
+              <h3>{description === undefined || description.length === 0 ? 'No description' : description.length <= 28 ? description : `${description.slice(0, 28)}...`}</h3>
+              <p>Picture By: {author.slice(0, 28)}</p>
+            </div>
+            <div className='btnContainer'>
+              {isFav ? <button className='picBtn' onClick={handleInfo} style={{ padding: '0.2em' }}><img src={moreImg} /></button> : ''}
+              <button className='picBtn' onClick={handleFav} style={{ padding: '0.2em' }}>{isFav ? <img src={favOnImg} /> : <img src={favOffImg} />}</button>
+              <button className='picBtn' onClick={handleDownload} ><img style={{ width: '2em', height: '2em' }} src={downloadImg} /></button>
+            </div>
           </div>
+          {open ? <InfoModal description={description}
+            width={item.width}
+            height={item.height}
+            likes={item.likes}
+            onClose={handleCloseInfo}
+            isOpen={open}
+            id={item.id}
+            picture={item}
+          />
+            : ''}
         </div>
-        {open ? <InfoModal description={description}
-          width={item.width}
-          height={item.height}
-          likes={item.likes}
-          onClose={handleCloseInfo}
-          isOpen={open}
-          id={item.id}
-          picture={item}
-        />
-          : ''}
-      </div>
-
+      
     </>
   )
 
