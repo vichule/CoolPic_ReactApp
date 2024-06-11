@@ -5,7 +5,8 @@ import { CardItem } from '../../components/cardItem/cardItem'
 import Select from 'react-select'
 import { SearchBar } from '../../components/searchbar/searchbar'
 import { useEffect, useState } from 'react'
-
+import React from "react";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 export const Favorites = () => {
     const favoritePicture = useSelector(getFavorite)
@@ -44,7 +45,7 @@ export const Favorites = () => {
     ]
 
     const [currentPage, setCurrentPage] = useState(1)
-    const rows = 9
+    const rows = 12
     const firstPage = (currentPage - 1) * rows
     const lastPage = firstPage + rows
     const picsPerPage = filteredPictures.slice(firstPage, lastPage)
@@ -55,8 +56,6 @@ export const Favorites = () => {
     }
 
 
-
-
     return (
         <>
             <SearchBar onSearch={handleSearch} />
@@ -64,7 +63,7 @@ export const Favorites = () => {
             <div className='btnOrder'>
                 <Select options={options}
                     className='selectContainer'
-                    value={ options.value }
+                    value={options.value}
                     onChange={handleChange}
                     placeholder="Order By"
                 />
@@ -77,13 +76,25 @@ export const Favorites = () => {
                 :
                 <>
                     <div className="dataContainer">
-                        {picsPerPage.map((picture) => <CardItem
-                            imgUrl={picture.urls.regular}
-                            description={picture.alt_description}
-                            author={picture.user.name}
-                            item={picture}
-                            key={picture.id} />
-                        )}
+                        <ResponsiveMasonry
+                            columnsCountBreakPoints={{ 300: 1, 700: 2, 1000: 3 }}
+                        >
+                            <Masonry columnsCount={3} gutter="10px" className='widthMasonry'>
+
+                                {picsPerPage.map((picture, index) =>
+
+                                    <CardItem
+                                        imgUrl={picture.urls.regular}
+                                        description={picture.alt_description}
+                                        author={picture.user.name}
+                                        item={picture}
+                                        key={picture.id}
+                                        index={index}
+                                    />
+                                )}
+
+                            </Masonry>
+                        </ResponsiveMasonry>
                     </div>
                     <div className="paginationContainer">
                         <button className="paginationBtn" onClick={() => handlePage(currentPage - 1)}

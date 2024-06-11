@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPics } from "../../features/search/searchThunk";
 import { CardItem } from "../../components/cardItem/cardItem";
 import { SearchBar } from "../../components/searchbar/searchbar";
-
+import React from "react";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 
 
@@ -43,7 +44,7 @@ export const SearchHome = () => {
 
     const picturesToDisplay = pics.results ? pics.results : pics;
     const [currentPage, setCurrentPage] = useState(1)
-    const rows = 9
+    const rows = 12
     const firstPage = (currentPage - 1) * rows
     const lastPage = firstPage + rows
     const picsPerPage = picturesToDisplay.slice(firstPage, lastPage)
@@ -62,14 +63,26 @@ export const SearchHome = () => {
                 {picturesToDisplay.length === 0 ?
                     <p style={{ color: 'black' }}>It seems that there are no coincidences, try another word.</p>
                     :
-                    picsPerPage.map((picture) => <CardItem
-                        imgUrl={picture.urls.regular}
-                        description={picture.alt_description}
-                        author={picture.user.name}
-                        key={picture.id}
-                        item={picture}
-                    />
-                    )}
+                    <ResponsiveMasonry
+                        columnsCountBreakPoints={{ 300: 1, 700: 2, 1000: 3 }}
+                    >
+                        <Masonry columnsCount={3} gutter="10px" className='widthMasonry'>
+
+                            {picsPerPage.map((picture, index) =>
+
+                                <CardItem
+                                    imgUrl={picture.urls.regular}
+                                    description={picture.alt_description}
+                                    author={picture.user.name}
+                                    item={picture}
+                                    key={picture.id}
+                                    index={index}
+                                />
+                            )}
+
+                        </Masonry>
+                    </ResponsiveMasonry>
+                }
 
             </div>}
 
