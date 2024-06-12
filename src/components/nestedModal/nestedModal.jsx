@@ -43,7 +43,7 @@ const NestedModal = ({description, isOpen, onClose, onSubmit, picture }) => {
             name="newDescription"
             onChange={handleInputChange}
             className='inputEdit'
-            value={formState}
+            value={formState === undefined || formState.length === 0 ? picture.alt_description : formState}
           />
 
           <button  className='editBtn'>Confirm</button>

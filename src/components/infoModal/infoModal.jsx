@@ -35,7 +35,7 @@ const InfoModal = ({description,width, height,likes, isOpen, onClose, picture })
     <Modal hasCloseBtn={true} isOpen={isOpen} onClose={onClose}>
       <div>
         <div className='infoContainer'>
-              <b>Description:</b><p>{currentDescription === undefined || currentDescription.length === 0 ? 'No description' : currentDescription.length <= 28 ? currentDescription : currentDescription.slice(0,120)+'...'}</p>
+              <b>Description:</b><p>{description === undefined || description.length === 0 ? 'No description' : description.length <= 48 ? description : description.slice(0,55)+'...'}</p>
               <b>Width:</b><p>{width}</p>
               <b>Height:</b><p>{height}</p>
               <b>Likes:</b><p>{likes}</p>
