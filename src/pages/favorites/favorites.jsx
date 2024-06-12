@@ -77,9 +77,9 @@ export const Favorites = () => {
                 <>
                     <div className="dataContainer">
                         <ResponsiveMasonry
-                            columnsCountBreakPoints={{ 300: 1, 700: 2, 1000: 3 }}
+                            columnsCountBreakPoints={{ 300: 1, 700: 2, 1000: 4 }}
                         >
-                            <Masonry columnsCount={3} gutter="10px" className='widthMasonry'>
+                            <Masonry gutter="10px" className='widthMasonry'>
 
                                 {picsPerPage.map((picture, index) =>
 
