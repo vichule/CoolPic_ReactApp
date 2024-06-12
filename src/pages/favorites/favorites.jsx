@@ -77,7 +77,7 @@ export const Favorites = () => {
                 <>
                     <div className="dataContainer">
                         <ResponsiveMasonry
-                            columnsCountBreakPoints={{ 300: 1, 700: 2, 1000: 4 }}
+                            columnsCountBreakPoints={{ 300: 1, 700: 2, 1000: 3, 1300: 4 }}
                         >
                             <Masonry gutter="10px" className='widthMasonry'>
 
