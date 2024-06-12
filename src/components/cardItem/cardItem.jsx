@@ -61,7 +61,7 @@ export const CardItem = ({ imgUrl, description, author, item, index }) => {
           .then((response) => response.blob())
           .then((blob) => saveAs(blob, fileName))
           .catch((error) => console.log(error));
-        Swal.fire("Done!", "The picture has been download.", "success");
+        Swal.fire("Done!", "The picture has been downloaded.", "success");
       }
     })
   };
