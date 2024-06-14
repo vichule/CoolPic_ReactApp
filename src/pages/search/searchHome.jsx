@@ -44,7 +44,7 @@ export const SearchHome = () => {
 
     const picturesToDisplay = pics.results ? pics.results : pics;
     const [currentPage, setCurrentPage] = useState(1)
-    const rows = 12
+    const rows = 15
     const firstPage = (currentPage - 1) * rows
     const lastPage = firstPage + rows
     const picsPerPage = picturesToDisplay.slice(firstPage, lastPage)
@@ -64,7 +64,7 @@ export const SearchHome = () => {
                     <p style={{ color: 'black' }}>It seems that there are no coincidences, try another word.</p>
                     :
                     <ResponsiveMasonry
-                        columnsCountBreakPoints={{ 300: 1, 700: 2, 1000: 3, 1300: 4 }}
+                        columnsCountBreakPoints={{ 300: 1, 700: 2, 1000: 3, 1300: 4, 1500: 5 }}
                     >
                         <Masonry gutter="10px" className='widthMasonry'>
 

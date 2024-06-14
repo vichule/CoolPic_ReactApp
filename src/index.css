@@ -134,3 +134,9 @@ button:focus-visible {
     width: 120em !important;
   }
 }
+
+@media (width > 1500px) {
+  .widthMasonry{
+    width: 150em !important;
+  }
+}
