@@ -45,7 +45,7 @@ export const Favorites = () => {
     ]
 
     const [currentPage, setCurrentPage] = useState(1)
-    const rows = 12
+    const rows = 15
     const firstPage = (currentPage - 1) * rows
     const lastPage = firstPage + rows
     const picsPerPage = filteredPictures.slice(firstPage, lastPage)
@@ -77,7 +77,7 @@ export const Favorites = () => {
                 <>
                     <div className="dataContainer">
                         <ResponsiveMasonry
-                            columnsCountBreakPoints={{ 300: 1, 700: 2, 1000: 3, 1300: 4 }}
+                            columnsCountBreakPoints={{ 300: 1, 700: 2, 1000: 3, 1300: 4, 1500: 5}}
                         >
                             <Masonry gutter="10px" className='widthMasonry'>
 

@@ -44,7 +44,7 @@ export const SearchHome = () => {
 
     const picturesToDisplay = pics.results ? pics.results : pics;
     const [currentPage, setCurrentPage] = useState(1)
-    const rows = 15
+    const rows = 10
     const firstPage = (currentPage - 1) * rows
     const lastPage = firstPage + rows
     const picsPerPage = picturesToDisplay.slice(firstPage, lastPage)
